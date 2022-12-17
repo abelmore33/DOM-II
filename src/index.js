@@ -1,4 +1,6 @@
 import './less/index.less'
+
+// Your code goes here!
 console.log("hello")
 // Your code goes here!
 Array.from(document.links).forEach(link => 
@@ -10,7 +12,7 @@ Array.from(document.links).forEach(link =>
         link.addEventListener("mouseleave",(event) => {
             link.style.color ="black";
         }));
-        
+
         addEventListener("load",(event) =>{
             console.log("Page is loaded");
         } 
@@ -18,9 +20,9 @@ Array.from(document.links).forEach(link =>
 
         addEventListener("wheel",(event) => {
             if(event.type === "wheel"){
-                document.body.innerHTML = '<h1>You scrolled with the wheel, please refresh the page and only use arrows!<h1/>'
+                console.log('User is scrolling')
             }
-            
+
         });
 
         const mainImage = document.querySelector(".intro img");
@@ -60,5 +62,33 @@ Array.from(document.links).forEach(link =>
                     boatImg.src = "https://media4.giphy.com/media/UuYwihkHeDptzuEkrG/giphy.gif";
                 })
                 const clickHere = document.querySelector(".content-destination")
-                console.log(clickHere)
-                clickHere.append("Click image!")
+                // console.log(clickHere)
+                const tag = document.createElement("p");
+                const text = document.createTextNode("Click Image");
+                tag.appendChild(text);
+                clickHere.appendChild(tag);
+
+                const images = document.querySelectorAll("img");
+                // console.log(images)
+                images.forEach(image => image.addEventListener("drag",(event) => {
+                    image.src = "";
+                    image.alt = ''
+                }))
+
+
+                const paragraphs = document.querySelectorAll("p");
+                paragraphs.forEach(paragraph => paragraph.addEventListener("copy",(event)=>{
+                    console.log(paragraph.innerText);
+                }))
+
+                const firstLink = document.querySelector('.nav-link');
+                firstLink.addEventListener("click",(event) => {
+                
+                    event.preventDefault();
+                    
+                })
+                firstLink.href = "facebook.com";
+                console.log(firstLink);
+
+
+                
